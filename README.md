@@ -17,3 +17,9 @@ See the following documentation for usages:
 
 * [http://formvalidation.io/addons/recaptcha1/](Use reCaptcha1 add-on)
 * [http://formvalidation.io/addons/recaptcha2/](Use reCaptcha2 add-on)
+
+## Releases
+
+* v0.3.0 (2015-03-25): Support multiple reCAPTCHA v2 elements on the same page
+* v0.2.0 (2015-02-09): Add localization support for reCaptcha2
+* v0.1.0 (2015-02-02): First release

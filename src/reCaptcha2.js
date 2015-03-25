@@ -38,8 +38,16 @@
          * - timeout: The number of seconds that session will expire
          */
         init: function(validator, options) {
-            var that = this;
+            var that            = this,
+                loadPrevCaptcha = (typeof window.reCaptchaLoaded === 'undefined')
+                                ? function() {}
+                                : window.reCaptchaLoaded;
+
             window.reCaptchaLoaded = function() {
+                // Call the previous loaded function
+                // to support multiple recaptchas on the same page
+                loadPrevCaptcha();
+
                 // Render the captcha
                 grecaptcha.render(options.element, {
                     sitekey: options.siteKey,
@@ -59,12 +67,15 @@
                 }, 3000);
             };
 
-            var script = document.createElement('script');
-            script.type  = 'text/javascript';
-            script.async = true;
-            script.defer = true;
-            script.src   = '//www.google.com/recaptcha/api.js?onload=reCaptchaLoaded&render=explicit' + (options.language ? '&hl=' + options.language : '');
-            document.getElementsByTagName('body')[0].appendChild(script);
+            var src = '//www.google.com/recaptcha/api.js?onload=reCaptchaLoaded&render=explicit' + (options.language ? '&hl=' + options.language : '');
+            if ($('body').find('script[src="' + src + '"]').length === 0) {
+                var script = document.createElement('script');
+                script.type  = 'text/javascript';
+                script.async = true;
+                script.defer = true;
+                script.src   = src;
+                document.getElementsByTagName('body')[0].appendChild(script);
+            }
         },
 
         _addCaptcha: function(validator, options) {
