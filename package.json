@@ -1,0 +1,38 @@
+{
+    "name": "addon-recaptcha",
+    "version": "0.3.0",
+    "description": "Show and validate a Google reCAPTCHA element",
+    "keywords": [
+        "jQuery",
+        "plugin",
+        "validate",
+        "validator",
+        "form",
+        "Bootstrap",
+        "Foundation",
+        "Pure",
+        "SemanticUI",
+        "UIKit"
+    ],
+    "author": {
+        "name": "Nguyen Huu Phuoc",
+        "email": "phuoc@huuphuoc.me",
+        "url": "https://twitter.com/nghuuphuoc"
+    },
+    "homepage": "http://formvalidation.io",
+    "bugs": {
+        "url": "https://github.com/formvalidation/support/issues",
+        "email": "phuoc@huuphuoc.me"
+    },
+    "license": "http://formvalidation.io/license/",
+    "main": [
+      "./dist/reCaptcha1.js",
+      "./dist/reCaptcha2.js"
+    ],
+    "devDependencies": {
+        "grunt": "latest",
+        "grunt-contrib-copy": "latest",
+        "grunt-contrib-uglify": "latest",
+        "grunt-contrib-watch": "latest"
+    }
+}
