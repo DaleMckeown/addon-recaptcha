@@ -39,8 +39,8 @@ module.exports = function(grunt) {
                         ' * This add-ons shows and validates a Google reCAPTCHA v1',
                         ' *',
                         ' * @link        http://formvalidation.io/addons/reCaptcha1/',
-                        ' * @author      https://twitter.com/nghuuphuoc',
                         ' * @license     http://formvalidation.io/license/',
+                        ' * @author      https://twitter.com/formvalidation',
                         ' * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc',
                         ' * @version     v<%= pkg.version %>, built on <%= grunt.template.today("yyyy-mm-dd h:MM:ss TT") %>',
                         ' */\n'
@@ -57,8 +57,8 @@ module.exports = function(grunt) {
                         ' * This add-ons shows and validates a Google reCAPTCHA v2',
                         ' *',
                         ' * @link        http://formvalidation.io/addons/reCaptcha2/',
-                        ' * @author      https://twitter.com/nghuuphuoc',
                         ' * @license     http://formvalidation.io/license/',
+                        ' * @author      https://twitter.com/formvalidation',
                         ' * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc',
                         ' * @version     v<%= pkg.version %>, built on <%= grunt.template.today("yyyy-mm-dd h:MM:ss TT") %>',
                         ' */\n'

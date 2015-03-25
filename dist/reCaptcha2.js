@@ -3,9 +3,9 @@
  * This add-ons shows and validates a Google reCAPTCHA v2
  *
  * @link        http://formvalidation.io/addons/reCaptcha2/
- * @author      https://twitter.com/nghuuphuoc
- * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
  * @license     http://formvalidation.io/license/
+ * @author      https://twitter.com/formvalidation
+ * @copyright   (c) 2013 - 2015 Nguyen Huu Phuoc
  */
 /* global grecaptcha: false */
 (function($) {
