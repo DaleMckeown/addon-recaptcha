@@ -37,6 +37,7 @@
          * - message: The invalid message that will be shown in case the captcha is not valid
          * You don't need to define it if the back-end URL above returns the message
          * - timeout: The number of seconds that session will expire
+         * - sToken: The secure token
          */
         init: function(validator, options) {
             var that            = this,

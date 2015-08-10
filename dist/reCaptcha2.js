@@ -15,6 +15,7 @@
             language: 'language',
             message: 'message',
             sitekey: 'siteKey',
+			stoken: 'sToken',
             theme: 'theme',
             timeout: 'timeout'
         },
@@ -36,6 +37,7 @@
          * - message: The invalid message that will be shown in case the captcha is not valid
          * You don't need to define it if the back-end URL above returns the message
          * - timeout: The number of seconds that session will expire
+         * - sToken: The secure token
          */
         init: function(validator, options) {
             var that            = this,
@@ -48,19 +50,24 @@
                 // to support multiple recaptchas on the same page
                 loadPrevCaptcha();
 
-                // Render the captcha
-                grecaptcha.render(options.element, {
-                    sitekey: options.siteKey,
-                    theme: options.theme || 'light',
-                    callback: function(response) {
-                        validator.updateStatus(that.CAPTCHA_FIELD, validator.STATUS_VALID);
+	            // prepare options for captcha
+	            var captchaOptions = {
+	                sitekey: options.siteKey,
+	                theme: options.theme || 'light',
+	                callback: function(response) {
+	                    validator.updateStatus(that.CAPTCHA_FIELD, validator.STATUS_VALID);
 
-                        // We might need to update the captcha status when session expires
-                        setTimeout(function() {
-                            validator.updateStatus(that.CAPTCHA_FIELD, validator.STATUS_INVALID);
-                        }, (options.timeout || that.CAPTCHA_TIMEOUT) * 1000);
-                    }
-                });
+	                    // We might need to update the captcha status when session expires
+	                    setTimeout(function() {
+	                        validator.updateStatus(that.CAPTCHA_FIELD, validator.STATUS_INVALID);
+	                    }, (options.timeout || that.CAPTCHA_TIMEOUT) * 1000);
+	                }
+	            };
+	            if (options.sToken) {
+	                captchaOptions.stoken = options.sToken;
+	            }
+	            // Render the captcha
+	            grecaptcha.render(options.element, captchaOptions);
 
                 setTimeout(function() {
                     that._addCaptcha(validator, options);
