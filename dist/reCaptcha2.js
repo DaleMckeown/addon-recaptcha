@@ -15,7 +15,7 @@
             language: 'language',
             message: 'message',
             sitekey: 'siteKey',
-			stoken: 'sToken',
+            stoken: 'sToken',
             theme: 'theme',
             timeout: 'timeout'
         },
@@ -63,9 +63,10 @@
 	                    }, (options.timeout || that.CAPTCHA_TIMEOUT) * 1000);
 	                }
 	            };
-	            if (options.sToken) {
-	                captchaOptions.stoken = options.sToken;
-	            }
+                if (options.sToken) {
+                    captchaOptions.stoken = options.sToken;
+                }
+
 	            // Render the captcha
 	            grecaptcha.render(options.element, captchaOptions);
 
