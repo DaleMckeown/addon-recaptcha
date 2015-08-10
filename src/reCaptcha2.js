@@ -15,6 +15,7 @@
             language: 'language',
             message: 'message',
             sitekey: 'siteKey',
+			stoken: 'sToken',
             theme: 'theme',
             timeout: 'timeout'
         },
@@ -48,19 +49,24 @@
                 // to support multiple recaptchas on the same page
                 loadPrevCaptcha();
 
-                // Render the captcha
-                grecaptcha.render(options.element, {
-                    sitekey: options.siteKey,
-                    theme: options.theme || 'light',
-                    callback: function(response) {
-                        validator.updateStatus(that.CAPTCHA_FIELD, validator.STATUS_VALID);
+	            // prepare options for captcha
+	            var captchaOptions = {
+	                sitekey: options.siteKey,
+	                theme: options.theme || 'light',
+	                callback: function(response) {
+	                    validator.updateStatus(that.CAPTCHA_FIELD, validator.STATUS_VALID);
 
-                        // We might need to update the captcha status when session expires
-                        setTimeout(function() {
-                            validator.updateStatus(that.CAPTCHA_FIELD, validator.STATUS_INVALID);
-                        }, (options.timeout || that.CAPTCHA_TIMEOUT) * 1000);
-                    }
-                });
+	                    // We might need to update the captcha status when session expires
+	                    setTimeout(function() {
+	                        validator.updateStatus(that.CAPTCHA_FIELD, validator.STATUS_INVALID);
+	                    }, (options.timeout || that.CAPTCHA_TIMEOUT) * 1000);
+	                }
+	            };
+	            if (options.sToken) {
+	                captchaOptions.stoken = options.sToken;
+	            }
+	            // Render the captcha
+	            grecaptcha.render(options.element, captchaOptions);
 
                 setTimeout(function() {
                     that._addCaptcha(validator, options);
