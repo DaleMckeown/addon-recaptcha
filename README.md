@@ -20,6 +20,7 @@ See the following documentation for usages:
 
 ## Releases
 
+* v0.3.1 (2015-08-10): The reCaptcha2 add-on adds support for passing the `stoken` parameter
 * v0.3.0 (2015-03-25):
     - Support multiple reCAPTCHA v2 elements on the same page
     - Add minified files
