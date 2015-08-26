@@ -92,8 +92,8 @@
 
         /**
          * Reset the captcha
-         * It doesn't remove the feedback icon and validation message. To do that, you need to call the $(form).resetField() method:
-         *      $(form).resetField('g-recaptcha-response');
+         * It doesn't remove the feedback icon and validation message. To do that, you need to call the $(form).formValidation('resetField') method:
+         *      $(form).formValidation('resetField', 'g-recaptcha-response');
          * @param {String} element The ID of element showing the captcha
          */
         reset: function(element) {
