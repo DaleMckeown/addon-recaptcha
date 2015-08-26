@@ -68,7 +68,11 @@
                 }
 
 	            // Render the captcha
-	            grecaptcha.render(options.element, captchaOptions);
+                // Store the widget Id to reuse later
+	            var widgetId = grecaptcha.render(options.element, captchaOptions);
+                $('#' + options.element)
+                    .data('fv.addon.recaptcha.id', widgetId)
+                    .data('fv.validator', validator);
 
                 setTimeout(function() {
                     that._addCaptcha(validator, options);
@@ -83,6 +87,19 @@
                 script.defer = true;
                 script.src   = src;
                 document.getElementsByTagName('body')[0].appendChild(script);
+            }
+        },
+
+        /**
+         * Reset the captcha
+         * It doesn't remove the feedback icon and validation message. To do that, you need to call the $(form).resetField() method:
+         *      $(form).resetField('g-recaptcha-response');
+         * @param {String} element The ID of element showing the captcha
+         */
+        reset: function(element) {
+            var widgetId = $('#' + element).data('fv.addon.recaptcha.id');
+            if (widgetId !== null) {
+                grecaptcha.reset(widgetId);
             }
         },
 

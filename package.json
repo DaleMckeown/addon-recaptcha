@@ -1,6 +1,6 @@
 {
     "name": "addon-recaptcha",
-    "version": "0.3.1",
+    "version": "0.4.0",
     "description": "Show and validate a Google reCAPTCHA element",
     "keywords": [
         "jQuery",
